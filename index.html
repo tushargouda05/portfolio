@@ -10,9 +10,12 @@
 <body>
 
   <header class="site-header">
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
       <a href="#top" class="logo">Tushar Gouda</a>
-      <ul class="nav-links">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -31,7 +34,7 @@
     <section id="about">
       <h2>About</h2>
       <div class="about-content">
-        <img src="images/profile.svg" alt="Profile photo of Your Name" class="profile-photo">
+        <img src="images/profile.svg" alt="Default profile avatar" class="profile-photo">
         <div>
           <p>
             I'm a student learning web development. I enjoy turning ideas into
@@ -48,19 +51,12 @@
 
     <section id="projects">
       <h2>Projects</h2>
-      <div class="cards">
-        <article class="card">
-          <h3>Problem Solver</h3>
-          <p>A community Q&A platform where users post problems from any field, collect solutions from others, and like or dislike the answers. Built with React, Express and MongoDB, with JWT authentication, search and category filters, and notifications.</p>
-          <a href="https://problem-solver-vert.vercel.app/">View project</a>
-        </article>
-        <article class="card">
-          <h3>Staybnb</h3>
-          <p>A full-stack Airbnb clone where users can list properties, search and book stays. Built with React, Node/Express and MongoDB, with secure cookie-based authentication and Cloudinary image uploads.</p>
-          <a href="https://airbnb-clone-ten-henna.vercel.app/">View project</a>
-        </article>
-       
+      <div class="filter-buttons" role="group" aria-label="Filter projects by technology">
+        <button class="filter-button active" type="button" data-filter="All" aria-pressed="true">All</button>
+        <button class="filter-button" type="button" data-filter="HTML/CSS" aria-pressed="false">HTML/CSS</button>
+        <button class="filter-button" type="button" data-filter="JavaScript" aria-pressed="false">JavaScript</button>
       </div>
+      <div class="cards" id="project-cards" aria-live="polite"></div>
     </section>
 
     <section id="contact">
@@ -79,5 +75,6 @@
     <p>&copy; 2026 Tushar Gouda. Built with HTML and CSS.</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
