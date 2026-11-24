@@ -83,14 +83,18 @@ navLinks.querySelectorAll("a").forEach((link) => {
 const githubLink = document.querySelector("#github-link");
 const linkedinLink = document.querySelector("#linkedin-link");
 
-githubLink.addEventListener("click", () => {
-  if (typeof gtag === "function") {
-    gtag("event", "github_click");
-  }
-});
+if (githubLink) {
+  githubLink.addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "github_click");
+    }
+  });
+}
 
-linkedinLink.addEventListener("click", () => {
-  if (typeof gtag === "function") {
-    gtag("event", "linkedin_click");
-  }
-});
+if (linkedinLink) {
+  linkedinLink.addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "linkedin_click");
+    }
+  });
+}
