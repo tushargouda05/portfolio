@@ -38,8 +38,20 @@ function renderProjects(filter = "All") {
       </div>
     </a>
   `).join("");
-}
 
+  // Track project clicks
+  projectCards.querySelectorAll(".card").forEach((card, index) => {
+    card.addEventListener("click", () => {
+      const project = visibleProjects[index];
+
+      if (typeof gtag === "function") {
+        gtag("event", "project_click", {
+          project_name: project.title
+        });
+      }
+    });
+  });
+}
 renderProjects();
 
 filterButtons.forEach((button) => {
@@ -65,4 +77,20 @@ navLinks.querySelectorAll("a").forEach((link) => {
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation menu");
   });
+});
+
+
+const githubLink = document.querySelector("#github-link");
+const linkedinLink = document.querySelector("#linkedin-link");
+
+githubLink.addEventListener("click", () => {
+  if (typeof gtag === "function") {
+    gtag("event", "github_click");
+  }
+});
+
+linkedinLink.addEventListener("click", () => {
+  if (typeof gtag === "function") {
+    gtag("event", "linkedin_click");
+  }
 });
